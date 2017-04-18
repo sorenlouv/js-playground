@@ -4,9 +4,9 @@
         "es6": true,
         "node": true
     },
-    "extends": "airbnb",
-    "rules": {
-        "comma-dangle": ["error", "never"],
-        "no-use-before-define": "off"
-    }
+    "extends": [
+        "standard",
+        "prettier"
+    ],
+    "rules": {}
 }

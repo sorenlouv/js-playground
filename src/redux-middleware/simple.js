@@ -11,19 +11,16 @@ const reducer = (state = 0, action) => {
   }
 };
 
-const middlewareA = store => next => (action) => {
-    return next(action);
+const middlewareA = store => next => action => {
+  return next(action);
 };
 
-const middlewareB = store => next => (action) => {
-    next(action);
-    return 'be';
+const middlewareB = store => next => action => {
+  next(action);
+  return 'be';
 };
 
-const store = createStore(
-    reducer,
-    applyMiddleware(middlewareA, middlewareB)
-);
+const store = createStore(reducer, applyMiddleware(middlewareA, middlewareB));
 
 const render = () => {
   console.log(store.getState());
@@ -31,7 +28,6 @@ const render = () => {
 
 render();
 store.subscribe(render);
-debugger;
 
 const a = store.dispatch({ type: 'INCREMENT' });
 const b = store.dispatch({ type: 'INCREMENT' });

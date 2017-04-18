@@ -1,7 +1,7 @@
 const { createStore, applyMiddleware } = require('redux');
 
 const asyncOperation = (action, cb) => {
-  setTimeout(() => cb(4), 500);
+  setTimeout(() => cb, 500);
 };
 
 const DEFAULT_STATE = {
@@ -34,8 +34,8 @@ const middlewareA = store => next => action => {
   }
 
   store.dispatch({ type: 'START_LOADING' });
-  asyncOperation(action.text, res => {
-    const nextAction = Object.assign({}, action, { amount: res });
+  asyncOperation(action.text, () => {
+    const nextAction = Object.assign({}, action, { amount: 4 });
     next(nextAction);
     store.dispatch({ type: 'STOP_LOADING' });
   });

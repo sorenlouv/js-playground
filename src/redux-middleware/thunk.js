@@ -1,8 +1,5 @@
 const { createStore, applyMiddleware } = require('redux');
 const thunkMiddleware = require('redux-thunk').default;
-const { createLogger } = require('redux-logger');
-
-const loggerMiddleware = createLogger();
 
 const reducer = (state = 0, action) => {
   switch (action.type) {
@@ -15,12 +12,7 @@ const reducer = (state = 0, action) => {
   }
 };
 
-const store = createStore(
-  reducer,
-  applyMiddleware(
-    thunkMiddleware
-  )
-);
+const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
 const render = () => {
   console.log(store.getState());
@@ -37,17 +29,15 @@ store.dispatch({ type: 'INCREMENT' });
 store.dispatch({ type: 'INCREMENT' });
 
 function makeAsyncIncrement() {
-  return (dispatch) => {
-    return getDelayedPromise(800)
-      .then(() => {
-        dispatch({ type: 'INCREMENT' });
-      });
+  return dispatch => {
+    return getDelayedPromise(800).then(() => {
+      dispatch({ type: 'INCREMENT' });
+    });
   };
 }
 
 function getDelayedPromise(delay) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(resolve, delay);
   });
 }
-
