@@ -29,6 +29,6 @@ const render = () => {
 render();
 store.subscribe(render);
 
-const a = store.dispatch({ type: 'INCREMENT' });
-const b = store.dispatch({ type: 'INCREMENT' });
-const c = store.dispatch({ type: 'DECREMENT' });
+store.dispatch({ type: 'INCREMENT' });
+store.dispatch({ type: 'INCREMENT' });
+store.dispatch({ type: 'DECREMENT' });
