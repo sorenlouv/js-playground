@@ -1,10 +1,7 @@
 const assert = require('assert');
 
-const compose = (...funcs) => {
-  return (...args) => {
-    return funcs.reduce((mem, func) => [func(...mem)], [...args]);
-  };
-};
+const compose = (...funcs) => (...args) =>
+  funcs.reduce((mem, func) => [func(...mem)], [...args]);
 
 const sum = (x, y) => x + y;
 const double = x => x * 2;
@@ -17,7 +14,7 @@ for (let i = 0; i < 10; i++) {
   }
 }
 
-// const greet = (x) => `Hello, ${ x }`;
-// const emote = (x) => `${x} :)`;
-// const happyGreeting = compose(emote, greet);
-// console.log(happyGreeting('Søren'));
+// Const greet = (x) => `Hello, ${ x }`;
+// Const emote = (x) => `${x} :)`;
+// Const happyGreeting = compose(emote, greet);
+// Console.log(happyGreeting('Søren'));

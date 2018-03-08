@@ -11,12 +11,11 @@ const reducer = (state = 0, action) => {
   }
 };
 
-const middlewareA = store => next => action => {
-  return next(action);
-};
+const middlewareA = store => next => action => next(action);
 
 const middlewareB = store => next => action => {
   next(action);
+
   return 'be';
 };
 

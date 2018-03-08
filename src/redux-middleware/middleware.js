@@ -36,6 +36,7 @@ const middlewareA = store => next => action => {
   store.dispatch({ type: 'START_LOADING' });
   asyncOperation(action.text, () => {
     const nextAction = Object.assign({}, action, { amount: 4 });
+
     next(nextAction);
     store.dispatch({ type: 'STOP_LOADING' });
   });

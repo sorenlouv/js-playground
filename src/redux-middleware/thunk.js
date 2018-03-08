@@ -29,11 +29,10 @@ store.dispatch({ type: 'INCREMENT' });
 store.dispatch({ type: 'INCREMENT' });
 
 function makeAsyncIncrement() {
-  return dispatch => {
-    return getDelayedPromise(800).then(() => {
+  return dispatch =>
+    getDelayedPromise(800).then(() => {
       dispatch({ type: 'INCREMENT' });
     });
-  };
 }
 
 function getDelayedPromise(delay) {

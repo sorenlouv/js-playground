@@ -1,12 +1,19 @@
 {
-    "env": {
-        "commonjs": true,
-        "es6": true,
-        "node": true
-    },
-    "extends": [
-        "standard",
-        "prettier"
-    ],
-    "rules": {}
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "plugins": ["react", "prettier"],
+  "extends": ["standard", "plugin:react/recommended", "prettier"],
+  "rules": {
+    "prefer-const": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "semi": true
+      }
+    ]
+  }
 }
